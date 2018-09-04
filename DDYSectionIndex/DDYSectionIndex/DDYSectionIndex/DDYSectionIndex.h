@@ -32,4 +32,7 @@ typedef NS_ENUM(NSUInteger, DDYSectionIndexStyle) {
 /** 指示器背景颜色 可选(默认200, 200, 200, 0.8) */
 @property (nonatomic, strong) UIColor *indicatorBackColor;
 
+/** 点中(滑中)回调 */
+@property (nonatomic, copy) void (^selectedIndexBlock)(NSInteger index);
+
 @end

@@ -1,5 +1,6 @@
 #import "DDYSectionIndex.h"
 
+static BOOL isTouched;
 
 static inline UIColor *color(CGFloat r, CGFloat g, CGFloat b, CGFloat a) { // arc4random_uniform(256)
     return [UIColor colorWithRed:(r)/255. green:(g)/255. blue:(b)/255. alpha:a];
@@ -10,6 +11,8 @@ static inline UIColor *color(CGFloat r, CGFloat g, CGFloat b, CGFloat a) { // ar
 @property (nonatomic, strong) NSMutableArray <CALayer *>*titleLayers;
 /** 选择指示 */
 @property (nonatomic, strong) UILabel *indicator;
+/** 当前序列 */
+@property (nonatomic, assign) NSInteger currentIndex;
 /** 触感反馈 */
 @property (nonatomic, strong) UIImpactFeedbackGenerator *feedbackGenerator NS_AVAILABLE_IOS(10_0);
 
@@ -90,30 +93,26 @@ static inline UIColor *color(CGFloat r, CGFloat g, CGFloat b, CGFloat a) { // ar
 - (void)setDataSource:(NSArray<NSString *> *)dataSource {
     if (_dataSource == dataSource) return;
     _dataSource = [dataSource copy];
-    
+    [self configLayer];
 }
 
 //- (CAShapeLayer *)searchLayer {
 //
 //}
 
-- (void)textLayerWithIndex:(int)index {
+- (void)configLayer {
 
     NSMutableArray *tempLayerArray = [NSMutableArray array];
     for (int i = 0; i < _dataSource.count; i++) {
         @autoreleasepool {
-            CGFloat x = self.bounds.size.width - self.indexRightMargin - self.indexItemHeight;
-            CGFloat y = (self.bounds.size.height - self.indexItemHeight*_dataSource.count)/2. + self.indexItemHeight * index;
-            CGFloat w = self.indexItemHeight;
-            CGFloat h = self.indexItemHeight;
-            NSString *title = _dataSource[index];
+            NSString *title = _dataSource[i];
             
             if ([title isEqualToString:UITableViewIndexSearch]) {
                 
             } else {
                 CATextLayer *textLayer = [CATextLayer layer];
-                [textLayer setFrame:CGRectMake(x, y, w, h)];
-                [textLayer setString:self.dataSource[index]];
+                [textLayer setFrame:[self frameWithIndex:i]];
+                [textLayer setString:self.dataSource[i]];
                 [textLayer setFontSize: self.indexItemHeight * 0.8];
                 [textLayer setCornerRadius: self.indexItemHeight/2.];
                 [textLayer setAlignmentMode:kCAAlignmentCenter];
@@ -127,22 +126,124 @@ static inline UIColor *color(CGFloat r, CGFloat g, CGFloat b, CGFloat a) { // ar
     self.titleLayers = [NSMutableArray arrayWithArray:tempLayerArray];
 }
 
+- (void)setCurrentIndex:(NSInteger)currentIndex {
+    if (currentIndex<0 || currentIndex>=self.dataSource.count || currentIndex==_currentIndex) return;
+    [self textLayerUpdate:NO];
+    _currentIndex = currentIndex;
+    [self textLayerUpdate:YES];
+}
+
+#pragma mark 根据index获取坐标
+- (CGRect)frameWithIndex:(int)index {
+    CGFloat x = self.bounds.size.width - self.indexRightMargin - self.indexItemHeight;
+    CGFloat y = (self.bounds.size.height - self.indexItemHeight*_dataSource.count)/2. + self.indexItemHeight * index;
+    CGFloat w = self.indexItemHeight;
+    CGFloat h = self.indexItemHeight;
+    return CGRectMake(x, y, w, h);
+}
+
+#pragma mark 根据坐标y值获取index
+- (NSInteger)indexWithPointY:(CGFloat)pointY adjust:(BOOL)adjust {
+    CGFloat y = (self.bounds.size.height - self.indexItemHeight*_dataSource.count)/2.;
+    NSInteger tempIndex = (NSInteger)ceil((pointY - y)/self.indexItemHeight);
+    if (adjust) {
+        return MIN(MAX(0, tempIndex), self.dataSource.count - 1);
+    }
+    return tempIndex;
+}
+
+#pragma mark 处理指示器
+- (void)indicatorShow:(BOOL)show animated:(BOOL)animated {
+    if ((show && !self.indicator.hidden) || (!show && self.indicator.hidden)) return;
+    if (show) {
+        self.indicator.hidden = YES;
+        CALayer *tempLayer = self.titleLayers[self.currentIndex];
+        if ([tempLayer isKindOfClass:[CATextLayer class]]) {
+            self.indicator.text = [(CATextLayer *)tempLayer string];
+            self.indicator.hidden = NO;
+            [UIView animateWithDuration:animated ? 0.25 : 0 animations:^{
+                self.indicator.alpha = 1;
+            }];
+        }
+    } else {
+        [UIView animateWithDuration:animated ? 0.25 : 0 animations:^{
+            self.indicator.alpha = 0;
+        } completion:^(BOOL finished) {
+            self.indicator.hidden = YES;
+        }];
+    }
+}
+
+#pragma mark 索引元素更新
+- (void)textLayerUpdate:(BOOL)selected {
+    CALayer *tempLayer = self.titleLayers[self.currentIndex];
+    if ([tempLayer isKindOfClass:[CATextLayer class]]) {
+        [CATransaction begin];
+        [CATransaction setDisableActions:YES];
+        [(CATextLayer *)tempLayer setBackgroundColor:selected ? self.indexBackSelectedColor.CGColor : self.indexBackColor.CGColor];
+        [(CATextLayer *)tempLayer setForegroundColor:selected ? self.indexTextSelectedColor.CGColor : self.indexTextColor.CGColor];
+        [CATransaction commit];
+    }
+}
+
+#pragma mark 触感反馈
+- (void)openFeedbackGenerator {
+    if (@available(iOS 10.0, *)) {
+        if (isTouched) {
+            [self.feedbackGenerator prepare];
+            [self.feedbackGenerator impactOccurred];
+        }
+    }
+}
+
 #pragma mark - 事件
-static BOOL isTouched;
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     if (isTouched) return YES;
-    
+    if (!self.titleLayers || self.titleLayers.count==0) return NO;
+    CALayer *firstLayer = self.titleLayers.firstObject;
+    CALayer *lastLayer = self.titleLayers.lastObject;
+    if (point.x > firstLayer.frame.origin.x-self.indexRightMargin &&
+        point.y > firstLayer.frame.origin.y-self.indexRightMargin &&
+        point.y < CGRectGetMaxY(lastLayer.frame) + self.indexRightMargin) {
+         return YES;
+    }
     return NO;
 }
 
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     isTouched = YES;
-    
+    CGPoint point = [touch locationInView:self];
+    NSInteger currentIndex = [self indexWithPointY:point.y adjust:NO];
+    if (currentIndex < 0 || currentIndex>=self.dataSource.count) return YES;
+    self.currentIndex = currentIndex;
+    [self indicatorShow:YES animated:YES];
+    if (self.selectedIndexBlock) self.selectedIndexBlock(currentIndex);
+    return YES;
+}
+
+- (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
+    isTouched = YES;
+    CGPoint point = [touch locationInView:self];
+    NSInteger currentIndex = [self indexWithPointY:point.y adjust:YES];
+    if (currentIndex == self.currentIndex) return YES;
+    self.currentIndex = currentIndex;
+    [self indicatorShow:YES animated:YES];
+    if (self.selectedIndexBlock) self.selectedIndexBlock(currentIndex);
+    return YES;
+}
+
+- (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
+    isTouched = NO;
+    [self indicatorShow:NO animated:YES];
+}
+
+- (void)cancelTrackingWithEvent:(UIEvent *)event {
+    isTouched = NO;
+    [self indicatorShow:NO animated:YES];
 }
 
 @end
 
 /**
- 
  [arr addObject:@"{search}"];//等价于[arr addObject:UITableViewIndexSearch];
  */

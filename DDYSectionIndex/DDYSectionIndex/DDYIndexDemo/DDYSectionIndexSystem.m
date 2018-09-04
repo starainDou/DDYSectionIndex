@@ -1,5 +1,6 @@
 #import "DDYSectionIndexSystem.h"
 #import "DDYIndexModel.h"
+#import "NSArray+DDYExtension.h"
 
 @interface DDYSectionIndexSystem ()<UITableViewDelegate, UITableViewDataSource>
 

@@ -1,5 +1,4 @@
 #import <Foundation/Foundation.h>
-#import "DDYCategoryHeader.h"
 
 @interface DDYIndexModel : NSObject
 

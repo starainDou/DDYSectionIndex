@@ -5,7 +5,7 @@
 
 /** 设置样式 默认DDYSectionIndexStyleRight */
 @property (nonatomic, assign) DDYSectionIndexStyle ddySectionIndexStyle;
-/** 是否取代系统索引 默认不替换(自定义索引不显示) */
+/** 是否取代系统索引 默认不替换(不替换自定义索引不显示，替换则系统的不显示) */
 @property (nonatomic, assign) BOOL replaceSystemSectionIndex;
 
 /** 索引文字颜色 */

@@ -2,7 +2,6 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 #import <UIKit/UIKit.h>
-#import "NSString+FontAwesome.h"
 
 @implementation NSArray (DDYExtension)
 
