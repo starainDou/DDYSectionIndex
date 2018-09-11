@@ -26,6 +26,7 @@ static BOOL isUseCustomIndex;
 + (void)load
 {
     [self swizzledSelector:@selector(ddy_SetDelegate:) originalSelector:@selector(setDelegate:)];
+    [self swizzledSelector:@selector(ddy_Dealloc) originalSelector:NSSelectorFromString(@"dealloc")];
     [self swizzledSelector:@selector(SCIndexView_didMoveToSuperview) originalSelector:@selector(didMoveToSuperview)];
     [self swizzledSelector:@selector(SCIndexView_removeFromSuperview) originalSelector:@selector(removeFromSuperview)];
 }
@@ -218,6 +219,10 @@ static BOOL isUseCustomIndex;
 - (void)setDdy_ReplaceSystemSectionIndex:(BOOL)ddy_ReplaceSystemSectionIndex {
      objc_setAssociatedObject(self, @selector(ddy_ReplaceSystemSectionIndex), @(ddy_ReplaceSystemSectionIndex), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     isUseCustomIndex = ddy_ReplaceSystemSectionIndex;
+}
+
+- (void)ddy_Dealloc {
+    isUseCustomIndex = NO;
 }
 
 @end
