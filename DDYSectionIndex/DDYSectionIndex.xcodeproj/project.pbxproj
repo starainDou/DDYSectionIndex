@@ -12,13 +12,14 @@
 		A4A095AB2137DE2300F807FD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4A095A02137DE2300F807FD /* Info.plist */; };
 		A4A095AC2137DE2300F807FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A095A12137DE2300F807FD /* main.m */; };
 		A4A095AF2137DE2300F807FD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A095A52137DE2300F807FD /* ViewController.m */; };
-		A4A095B92137EE3100F807FD /* UITableView+DDYSectionIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A095B82137EE3100F807FD /* UITableView+DDYSectionIndex.m */; };
 		A4A095C22138CC0B00F807FD /* DDYSectionIndexCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A095BE2138CC0B00F807FD /* DDYSectionIndexCustom.m */; };
 		A4A095C32138CC0B00F807FD /* DDYSectionIndexData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4A095BF2138CC0B00F807FD /* DDYSectionIndexData.plist */; };
 		A4A095C42138CC0B00F807FD /* DDYSectionIndexSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A095C12138CC0B00F807FD /* DDYSectionIndexSystem.m */; };
 		A4A095CB2138D05400F807FD /* DDYIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A095CA2138D05400F807FD /* DDYIndexModel.m */; };
-		A4A09602213CD55300F807FD /* DDYSectionIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A09601213CD55300F807FD /* DDYSectionIndex.m */; };
 		A4A0960F213CF7B800F807FD /* NSArray+DDYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A0960E213CF7B800F807FD /* NSArray+DDYExtension.m */; };
+		A4F46BA42147C80000F4C51D /* SCIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F46B9F2147C80000F4C51D /* SCIndexView.m */; };
+		A4F46BA52147C80000F4C51D /* SCIndexViewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F46BA12147C80000F4C51D /* SCIndexViewConfiguration.m */; };
+		A4F46BA62147C80000F4C51D /* UITableView+SCIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F46BA32147C80000F4C51D /* UITableView+SCIndexView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +31,6 @@
 		A4A095A12137DE2300F807FD /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A4A095A42137DE2300F807FD /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A4A095A52137DE2300F807FD /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A4A095B72137EE3100F807FD /* UITableView+DDYSectionIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+DDYSectionIndex.h"; sourceTree = "<group>"; };
-		A4A095B82137EE3100F807FD /* UITableView+DDYSectionIndex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DDYSectionIndex.m"; sourceTree = "<group>"; };
 		A4A095BD2138CC0B00F807FD /* DDYSectionIndexCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDYSectionIndexCustom.h; sourceTree = "<group>"; };
 		A4A095BE2138CC0B00F807FD /* DDYSectionIndexCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDYSectionIndexCustom.m; sourceTree = "<group>"; };
 		A4A095BF2138CC0B00F807FD /* DDYSectionIndexData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DDYSectionIndexData.plist; sourceTree = "<group>"; };
@@ -39,10 +38,14 @@
 		A4A095C12138CC0B00F807FD /* DDYSectionIndexSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDYSectionIndexSystem.m; sourceTree = "<group>"; };
 		A4A095C92138D05400F807FD /* DDYIndexModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDYIndexModel.h; sourceTree = "<group>"; };
 		A4A095CA2138D05400F807FD /* DDYIndexModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDYIndexModel.m; sourceTree = "<group>"; };
-		A4A09600213CD55300F807FD /* DDYSectionIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDYSectionIndex.h; sourceTree = "<group>"; };
-		A4A09601213CD55300F807FD /* DDYSectionIndex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDYSectionIndex.m; sourceTree = "<group>"; };
 		A4A0960D213CF7B800F807FD /* NSArray+DDYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DDYExtension.h"; sourceTree = "<group>"; };
 		A4A0960E213CF7B800F807FD /* NSArray+DDYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DDYExtension.m"; sourceTree = "<group>"; };
+		A4F46B9E2147C80000F4C51D /* SCIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIndexView.h; sourceTree = "<group>"; };
+		A4F46B9F2147C80000F4C51D /* SCIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIndexView.m; sourceTree = "<group>"; };
+		A4F46BA02147C80000F4C51D /* SCIndexViewConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIndexViewConfiguration.h; sourceTree = "<group>"; };
+		A4F46BA12147C80000F4C51D /* SCIndexViewConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIndexViewConfiguration.m; sourceTree = "<group>"; };
+		A4F46BA22147C80000F4C51D /* UITableView+SCIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SCIndexView.h"; sourceTree = "<group>"; };
+		A4F46BA32147C80000F4C51D /* UITableView+SCIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SCIndexView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +102,9 @@
 		A4A095B02137DE6800F807FD /* DDYSectionIndex */ = {
 			isa = PBXGroup;
 			children = (
-				A4A095B72137EE3100F807FD /* UITableView+DDYSectionIndex.h */,
-				A4A095B82137EE3100F807FD /* UITableView+DDYSectionIndex.m */,
-				A4A09600213CD55300F807FD /* DDYSectionIndex.h */,
-				A4A09601213CD55300F807FD /* DDYSectionIndex.m */,
-				A4A0960E213CF7B800F807FD /* NSArray+DDYExtension.m */,
+				A4F46B9D2147C80000F4C51D /* SCIndexView */,
 				A4A0960D213CF7B800F807FD /* NSArray+DDYExtension.h */,
+				A4A0960E213CF7B800F807FD /* NSArray+DDYExtension.m */,
 			);
 			path = DDYSectionIndex;
 			sourceTree = "<group>";
@@ -121,6 +121,19 @@
 				A4A095CA2138D05400F807FD /* DDYIndexModel.m */,
 			);
 			path = DDYIndexDemo;
+			sourceTree = "<group>";
+		};
+		A4F46B9D2147C80000F4C51D /* SCIndexView */ = {
+			isa = PBXGroup;
+			children = (
+				A4F46B9E2147C80000F4C51D /* SCIndexView.h */,
+				A4F46B9F2147C80000F4C51D /* SCIndexView.m */,
+				A4F46BA02147C80000F4C51D /* SCIndexViewConfiguration.h */,
+				A4F46BA12147C80000F4C51D /* SCIndexViewConfiguration.m */,
+				A4F46BA22147C80000F4C51D /* UITableView+SCIndexView.h */,
+				A4F46BA32147C80000F4C51D /* UITableView+SCIndexView.m */,
+			);
+			path = SCIndexView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,11 +206,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4A095B92137EE3100F807FD /* UITableView+DDYSectionIndex.m in Sources */,
+				A4F46BA52147C80000F4C51D /* SCIndexViewConfiguration.m in Sources */,
 				A4A095AF2137DE2300F807FD /* ViewController.m in Sources */,
+				A4F46BA42147C80000F4C51D /* SCIndexView.m in Sources */,
+				A4F46BA62147C80000F4C51D /* UITableView+SCIndexView.m in Sources */,
 				A4A0960F213CF7B800F807FD /* NSArray+DDYExtension.m in Sources */,
 				A4A095C22138CC0B00F807FD /* DDYSectionIndexCustom.m in Sources */,
-				A4A09602213CD55300F807FD /* DDYSectionIndex.m in Sources */,
 				A4A095CB2138D05400F807FD /* DDYIndexModel.m in Sources */,
 				A4A095AC2137DE2300F807FD /* main.m in Sources */,
 				A4A095A62137DE2300F807FD /* AppDelegate.m in Sources */,

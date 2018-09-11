@@ -1,5 +1,6 @@
 #import "ViewController.h"
 #import "DDYSectionIndexSystem.h"
+#import "DDYSectionIndexCustom.h"
 
 #ifndef DDYTopH
 #define DDYTopH (self.navigationController.navigationBar.frame.size.height + [[UIApplication sharedApplication] statusBarFrame].size.height)
@@ -13,7 +14,7 @@
 #define DDYScreenH [UIScreen mainScreen].bounds.size.height
 #endif
 
-@interface ViewController ()<UITextViewDelegate>
+@interface ViewController ()
 
 @end
 
@@ -23,12 +24,12 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:[self btnY: 50 tag:100 title:@"System"]];
-    [self.view addSubview:[self btnY:100 tag:101 title:@"Custom"]];
-    [self.view addSubview:[self btnY:150 tag:102 title:@"Custom_Search"]];
-    [self.view addSubview:[self btnY:200 tag:103 title:@"Custom_right"]];
-    [self.view addSubview:[self btnY:250 tag:104 title:@"Customh_Center"]];
-    [self.view addSubview:[self btnY:300 tag:105 title:@"Custom_Search_right"]];
-    [self.view addSubview:[self btnY:350 tag:106 title:@"Custom_Search_Center"]];
+    [self.view addSubview:[self btnY:100 tag:101 title:@"Custom_right"]];
+    [self.view addSubview:[self btnY:150 tag:102 title:@"Customh_Center"]];
+    [self.view addSubview:[self btnY:200 tag:103 title:@"Custom_Search_right"]];
+    [self.view addSubview:[self btnY:250 tag:104 title:@"Custom_Search_Center"]];
+    [self.view addSubview:[self btnY:300 tag:105 title:@"-"]];
+    [self.view addSubview:[self btnY:350 tag:106 title:@"-"]];
 }
 
 - (UIButton *)btnY:(CGFloat)y tag:(NSUInteger)tag title:(NSString *)title {
@@ -45,16 +46,35 @@
 }
 
 - (void)handleBtn:(UIButton *)sender {
+//        CATransition* transition = [CATransition animation];
+//        transition.duration = 0.25;
+//        transition.type = kCATransitionMoveIn;
+//        transition.subtype = kCATransitionFromTop;
+//        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+//        [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    
     if (sender.tag == 100) {
         [self.navigationController pushViewController:[[DDYSectionIndexSystem alloc] init] animated:YES];
     } else if (sender.tag == 101) {
-        [self.navigationController pushViewController:[[DDYSectionIndexSystem alloc] init] animated:YES];
+        DDYSectionIndexCustom *vc = [[DDYSectionIndexCustom alloc] init];
+        vc.indexViewStyle = SCIndexViewStyleDefault;
+        vc.hasSearch = NO;
+        [self.navigationController pushViewController:vc animated:YES];
     } else if (sender.tag == 102) {
-        [self.navigationController pushViewController:[[DDYSectionIndexSystem alloc] init] animated:YES];
+        DDYSectionIndexCustom *vc = [[DDYSectionIndexCustom alloc] init];
+        vc.indexViewStyle = SCIndexViewStyleCenterToast;
+        vc.hasSearch = NO;
+        [self.navigationController pushViewController:vc animated:YES];
     } else if (sender.tag == 103) {
-        [self.navigationController pushViewController:[[DDYSectionIndexSystem alloc] init] animated:YES];
+        DDYSectionIndexCustom *vc = [[DDYSectionIndexCustom alloc] init];
+        vc.indexViewStyle = SCIndexViewStyleDefault;
+        vc.hasSearch = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     } else if (sender.tag == 104) {
-        [self.navigationController pushViewController:[[DDYSectionIndexSystem alloc] init] animated:YES];
+        DDYSectionIndexCustom *vc = [[DDYSectionIndexCustom alloc] init];
+        vc.indexViewStyle = SCIndexViewStyleCenterToast;
+        vc.hasSearch = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     } else if (sender.tag == 105) {
         [self.navigationController pushViewController:[[DDYSectionIndexSystem alloc] init] animated:YES];
     } else if (sender.tag == 106) {
@@ -63,5 +83,3 @@
 }
 
 @end
-
-/** [[DDYEmitterFire alloc] init] 不可用[DDYEmitterFire new]替代，原因自行测试 */

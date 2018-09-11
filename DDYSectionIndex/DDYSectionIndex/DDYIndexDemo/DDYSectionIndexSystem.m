@@ -43,6 +43,7 @@
         _tableView.sectionIndexTrackingBackgroundColor = [UIColor yellowColor];
         // 当小于某个值则隐藏索引
         _tableView.sectionIndexMinimumDisplayRowCount = 6;
+      
     }
     return _tableView;
 }
