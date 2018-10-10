@@ -17,9 +17,8 @@
 		A4A095C42138CC0B00F807FD /* DDYSectionIndexSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A095C12138CC0B00F807FD /* DDYSectionIndexSystem.m */; };
 		A4A095CB2138D05400F807FD /* DDYIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A095CA2138D05400F807FD /* DDYIndexModel.m */; };
 		A4A0960F213CF7B800F807FD /* NSArray+DDYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A0960E213CF7B800F807FD /* NSArray+DDYExtension.m */; };
-		A4F46BA42147C80000F4C51D /* SCIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F46B9F2147C80000F4C51D /* SCIndexView.m */; };
-		A4F46BA52147C80000F4C51D /* SCIndexViewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F46BA12147C80000F4C51D /* SCIndexViewConfiguration.m */; };
-		A4F46BA62147C80000F4C51D /* UITableView+SCIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F46BA32147C80000F4C51D /* UITableView+SCIndexView.m */; };
+		A4AA9549216CAECD00902BBD /* UITableView+DDYIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9547216CAECD00902BBD /* UITableView+DDYIndexView.m */; };
+		A4AA954A216CAECD00902BBD /* DDYIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9548216CAECD00902BBD /* DDYIndexView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,12 +39,10 @@
 		A4A095CA2138D05400F807FD /* DDYIndexModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDYIndexModel.m; sourceTree = "<group>"; };
 		A4A0960D213CF7B800F807FD /* NSArray+DDYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DDYExtension.h"; sourceTree = "<group>"; };
 		A4A0960E213CF7B800F807FD /* NSArray+DDYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DDYExtension.m"; sourceTree = "<group>"; };
-		A4F46B9E2147C80000F4C51D /* SCIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIndexView.h; sourceTree = "<group>"; };
-		A4F46B9F2147C80000F4C51D /* SCIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIndexView.m; sourceTree = "<group>"; };
-		A4F46BA02147C80000F4C51D /* SCIndexViewConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCIndexViewConfiguration.h; sourceTree = "<group>"; };
-		A4F46BA12147C80000F4C51D /* SCIndexViewConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIndexViewConfiguration.m; sourceTree = "<group>"; };
-		A4F46BA22147C80000F4C51D /* UITableView+SCIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SCIndexView.h"; sourceTree = "<group>"; };
-		A4F46BA32147C80000F4C51D /* UITableView+SCIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SCIndexView.m"; sourceTree = "<group>"; };
+		A4AA9545216CAECD00902BBD /* DDYIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDYIndexView.h; sourceTree = "<group>"; };
+		A4AA9546216CAECD00902BBD /* UITableView+DDYIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+DDYIndexView.h"; sourceTree = "<group>"; };
+		A4AA9547216CAECD00902BBD /* UITableView+DDYIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DDYIndexView.m"; sourceTree = "<group>"; };
+		A4AA9548216CAECD00902BBD /* DDYIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDYIndexView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +99,10 @@
 		A4A095B02137DE6800F807FD /* DDYSectionIndex */ = {
 			isa = PBXGroup;
 			children = (
-				A4F46B9D2147C80000F4C51D /* SCIndexView */,
+				A4AA9545216CAECD00902BBD /* DDYIndexView.h */,
+				A4AA9548216CAECD00902BBD /* DDYIndexView.m */,
+				A4AA9546216CAECD00902BBD /* UITableView+DDYIndexView.h */,
+				A4AA9547216CAECD00902BBD /* UITableView+DDYIndexView.m */,
 				A4A0960D213CF7B800F807FD /* NSArray+DDYExtension.h */,
 				A4A0960E213CF7B800F807FD /* NSArray+DDYExtension.m */,
 			);
@@ -121,19 +121,6 @@
 				A4A095CA2138D05400F807FD /* DDYIndexModel.m */,
 			);
 			path = DDYIndexDemo;
-			sourceTree = "<group>";
-		};
-		A4F46B9D2147C80000F4C51D /* SCIndexView */ = {
-			isa = PBXGroup;
-			children = (
-				A4F46B9E2147C80000F4C51D /* SCIndexView.h */,
-				A4F46B9F2147C80000F4C51D /* SCIndexView.m */,
-				A4F46BA02147C80000F4C51D /* SCIndexViewConfiguration.h */,
-				A4F46BA12147C80000F4C51D /* SCIndexViewConfiguration.m */,
-				A4F46BA22147C80000F4C51D /* UITableView+SCIndexView.h */,
-				A4F46BA32147C80000F4C51D /* UITableView+SCIndexView.m */,
-			);
-			path = SCIndexView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,16 +193,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4F46BA52147C80000F4C51D /* SCIndexViewConfiguration.m in Sources */,
 				A4A095AF2137DE2300F807FD /* ViewController.m in Sources */,
-				A4F46BA42147C80000F4C51D /* SCIndexView.m in Sources */,
-				A4F46BA62147C80000F4C51D /* UITableView+SCIndexView.m in Sources */,
+				A4AA9549216CAECD00902BBD /* UITableView+DDYIndexView.m in Sources */,
 				A4A0960F213CF7B800F807FD /* NSArray+DDYExtension.m in Sources */,
 				A4A095C22138CC0B00F807FD /* DDYSectionIndexCustom.m in Sources */,
 				A4A095CB2138D05400F807FD /* DDYIndexModel.m in Sources */,
 				A4A095AC2137DE2300F807FD /* main.m in Sources */,
 				A4A095A62137DE2300F807FD /* AppDelegate.m in Sources */,
 				A4A095C42138CC0B00F807FD /* DDYSectionIndexSystem.m in Sources */,
+				A4AA954A216CAECD00902BBD /* DDYIndexView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

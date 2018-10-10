@@ -57,22 +57,22 @@
         [self.navigationController pushViewController:[[DDYSectionIndexSystem alloc] init] animated:YES];
     } else if (sender.tag == 101) {
         DDYSectionIndexCustom *vc = [[DDYSectionIndexCustom alloc] init];
-        vc.indexViewStyle = SCIndexViewStyleDefault;
+        vc.indexViewStyle = DDYIndexViewStyleRight;
         vc.hasSearch = NO;
         [self.navigationController pushViewController:vc animated:YES];
     } else if (sender.tag == 102) {
         DDYSectionIndexCustom *vc = [[DDYSectionIndexCustom alloc] init];
-        vc.indexViewStyle = SCIndexViewStyleCenterToast;
+        vc.indexViewStyle = DDYIndexViewStyleCenter;
         vc.hasSearch = NO;
         [self.navigationController pushViewController:vc animated:YES];
     } else if (sender.tag == 103) {
         DDYSectionIndexCustom *vc = [[DDYSectionIndexCustom alloc] init];
-        vc.indexViewStyle = SCIndexViewStyleDefault;
+        vc.indexViewStyle = DDYIndexViewStyleRight;
         vc.hasSearch = YES;
         [self.navigationController pushViewController:vc animated:YES];
     } else if (sender.tag == 104) {
         DDYSectionIndexCustom *vc = [[DDYSectionIndexCustom alloc] init];
-        vc.indexViewStyle = SCIndexViewStyleCenterToast;
+        vc.indexViewStyle = DDYIndexViewStyleCenter;
         vc.hasSearch = YES;
         [self.navigationController pushViewController:vc animated:YES];
     } else if (sender.tag == 105) {

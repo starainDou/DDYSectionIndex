@@ -3,7 +3,7 @@
 // !!!:
 
 #import "DDYSectionIndexCustom.h"
-#import "UITableView+SCIndexView.h"
+#import "UITableView+DDYIndexView.h"
 #import "DDYIndexModel.h"
 #import "NSArray+DDYExtension.h"
 
@@ -48,8 +48,8 @@
         _tableView.sectionIndexTrackingBackgroundColor = [UIColor clearColor];
         _tableView.sectionIndexMinimumDisplayRowCount = 6;
         
-        _tableView.sc_indexViewConfiguration = [SCIndexViewConfiguration configurationWithIndexViewStyle:self.indexViewStyle];
-        _tableView.sc_translucentForTableViewInNavigationBar = YES;
+        _tableView.ddy_IndexViewConfig = [DDYIndexViewConfig configWithIndexViewStyle:self.indexViewStyle];
+        _tableView.ddy_NavigationBarTranslucent = YES;
         _tableView.ddy_ReplaceSystemSectionIndex = YES;
     }
     return _tableView;
@@ -58,7 +58,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
-    self.tableView.tableHeaderView = self.hasSearch ? [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, DDYScreenW, 60)] : [UIView new];
+    self.tableView.tableHeaderView = self.hasSearch ? [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, DDYScreenW, 50)] : [UIView new];
     [self loadTestData];
 }
 
@@ -109,7 +109,7 @@
             
             NSMutableArray *tempArray =[NSMutableArray arrayWithArray:titlesArray];
             if (self.hasSearch) [tempArray insertObject:UITableViewIndexSearch atIndex:0];
-            self.tableView.sc_indexViewDataSource = tempArray.copy;
+            self.tableView.ddy_IndexViewDataSource = tempArray.copy;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
             });
