@@ -50,7 +50,6 @@
         
         _tableView.ddy_IndexViewConfig = [DDYIndexViewConfig configWithIndexViewStyle:self.indexViewStyle];
         _tableView.ddy_NavigationBarTranslucent = YES;
-        _tableView.ddy_ReplaceSystemSectionIndex = YES;
     }
     return _tableView;
 }
@@ -70,17 +69,6 @@
 #pragma mark 分组标题
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return self.titlesArray[section];
-}
-
-#pragma mark - 索引
-#pragma mark section右侧index数组
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return self.titlesArray;
-}
-
-#pragma mark 点击右侧索引表项时调用 索引与section的对应关系
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
-    return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
 }
 
 #pragma mark - 行
