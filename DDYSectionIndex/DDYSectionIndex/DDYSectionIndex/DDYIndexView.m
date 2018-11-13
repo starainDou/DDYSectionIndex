@@ -312,7 +312,11 @@ static inline NSInteger ddyLayerIndex(CGFloat y, CGFloat margin, CGFloat space) 
     if (self.config.indexViewStyle == DDYIndexViewStyleRight) {
         self.indicator.center = CGPointMake(self.bounds.size.width - self.indicator.bounds.size.width / 2 - self.config.indicatorRightMargin, textLayer.position.y);
     } else {
-        self.indicator.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+        UIWindow *keyWindow = [[[UIApplication sharedApplication] delegate] window];
+        if (!keyWindow) keyWindow = [[UIApplication sharedApplication] keyWindow];
+        CGRect rectToWindow = [self convertRect:self.bounds toView:keyWindow];
+        CGFloat moveY = rectToWindow.origin.y; // 如果偏移啥的随便改别的数值
+        self.indicator.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2 - moveY);
     }
     self.indicator.text = textLayer.string;
     
@@ -506,7 +510,6 @@ static inline NSInteger ddyLayerIndex(CGFloat y, CGFloat margin, CGFloat space) 
             case DDYIndexViewStyleCenter:
             {
                 _indicator.bounds = CGRectMake(0, 0, self.config.indicatorHeight, self.config.indicatorHeight);
-                _indicator.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
                 _indicator.layer.cornerRadius = self.config.indicatorCornerRadius;
             }
                 break;
